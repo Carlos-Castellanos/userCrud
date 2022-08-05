@@ -7,6 +7,7 @@ from datetime import datetime
 from flask import render_template
 import json
 from app.database import user
+from app.database import vehicle
 
 VERSION = "1.0.0"
 
@@ -55,7 +56,7 @@ def create_user():
     raw_data = request.json
     user.insert(raw_data)
     out = {
-        "satuts":"ok",
+        "status":"ok",
         "message" : "created"
     }
     return out, 201
@@ -72,3 +73,42 @@ def deactivate_user(pk):
     return "",204
 
 
+################################################################################
+@app.get("/vehicles")   #ok
+def get_all_vehicles():
+    vehicle_list = vehicle.scan()
+    out = {
+        "status":"ok",
+        "vehicles":vehicle_list
+    }
+    return out
+
+@app.get("/vehicles/<int:pk>")   #ok
+def get_vehicle_by_id(pk):
+    vehicle_obj = vehicle.select_by_id(pk)
+    out = {
+        "status":"ok",
+        "vehicles":vehicle_obj
+    }
+    return out
+
+@app.post("/vehicles")    
+def create_vehicle():
+    raw_data = request.json
+    vehicle.insert(raw_data)
+    out = {
+        "satuts":"ok",
+        "message" : "created"
+    }
+    return out, 201
+
+@app.put("/vehicles/<int:pk>")    #ok
+def update_vehicle(pk):
+    raw_data = request.json
+    vehicle.update(pk, raw_data)
+    return "", 204
+
+@app.delete("/vehicles/<int:pk>")   #ok
+def deactivate_vehicle(pk):
+    vehicle.deactivate(pk)
+    return "",204

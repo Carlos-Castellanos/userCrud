@@ -14,12 +14,12 @@ def output_formatter(results):
     return out
 
 def scan():
-    # cursor =get_db().execute(
-    #     "SELECT * FROM user WHERE active = 1",()
-    # )
     cursor =get_db().execute(
-        "SELECT * FROM user",()
+        "SELECT * FROM user WHERE active = 1",()
     )
+    # cursor =get_db().execute(
+    #     "SELECT * FROM user",()
+    # )
     results = cursor.fetchall()
     cursor.close()
     return output_formatter(results)

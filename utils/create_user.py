@@ -20,7 +20,7 @@ def create_user(first_name,last_name,hobbies):
         )
 
 if __name__ == "__main__":
-    fname = input("Type in the user' first name")
-    lname = input("Type in the user' last name")
-    hobbies = input("Type in the user' hobbies")
+    fname = input("Type in the user' first name: ")
+    lname = input("Type in the user' last name: ")
+    hobbies = input("Type in the user' hobbies: ")
     create_user(fname,lname,hobbies)

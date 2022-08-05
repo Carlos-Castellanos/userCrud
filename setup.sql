@@ -9,14 +9,14 @@ CREATE TABLE user (
     active BOOLEAN DEFAULT 1
 );
 
--- create table if not exists vehicles(
---   id integer primary key autoincrement,
---   id_user integer,
---   style text not null,
---   color text not null,
---   wheels integer not null
---   foreign key(id_user) references user(id)
--- );
+create table if not exists vehicles(
+  id integer primary key autoincrement,
+  id_user integer,
+  style text not null,
+  color text not null,
+  wheels integer not null,
+  foreign key(id_user) references user(id)
+);
 
 
 -- Insert test records:
