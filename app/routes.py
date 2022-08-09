@@ -13,6 +13,9 @@ VERSION = "1.0.0"
 
 app = Flask(__name__)
 
+@app.get("/")
+def get_serverName():
+    return "BackEnd Server: User.bd"
 
 @app.get("/ping")
 def get_ping():
